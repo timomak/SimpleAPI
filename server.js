@@ -3,10 +3,14 @@ const app = express();
 const bodyParser = require('body-parser')
 
 const trainers = {
-  Tom: {
+  1: {
+    name: 'Tom',
+    age: "24",
     pokemon : ['pikachu', 'squritle']
   },
-  Sam: {
+  2: {
+    name: 'Sam',
+    age: "22",
     pokemon : ['charmander', 'gengar']
   }
 }
@@ -19,10 +23,21 @@ app.get('/trainer-api', (req, res) => {
   res.json(trainers)
 });
 
-app.get('/trainer-api/:trainerName', (req, res) => {
-  res.json(trainers[req.params.trainerName])
+app.get('/trainer-api/:arrayNum', (req, res) => {
+  res.json(trainers[req.params.arrayNum])
 });
 
+app.get('/trainer-api/:arrayNum/name', (req, res) => {
+  res.json(trainers[req.params.arrayNum].name)
+});
+
+app.get('/trainer-api/:arrayNum/age', (req, res) => {
+  res.json(trainers[req.params.arrayNum].age)
+});
+
+app.get('/trainer-api/:arrayNum/pokemon', (req, res) => {
+  res.json(trainers[req.params.arrayNum].age)
+});
 
 app.listen(3000, function() {
     console.log('App is listening on port 3000')
